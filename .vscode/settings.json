@@ -1,0 +1,42 @@
+{
+    // Theme
+    "workbench.colorTheme": "Dracula",
+  
+    // config related to code formatting
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[javascript]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.formatOnSave": false,
+      "editor.defaultFormatter": null
+    },
+    "javascript.validate.enable": false, //disable all built-in syntax checking
+    "editor.codeActionsOnSave": {
+      // "source.fixAll.eslint": true,
+      // "source.fixAll.tslint": true,
+      // "source.organizeImports": true
+    },
+    "eslint.alwaysShowStatus": true,
+    // emmet
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "yaml.schemas": {
+      "file:///c%3A/Users/Sharna/.vscode/extensions/atlassian.atlascode-2.10.9/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "redhat.telemetry.enabled": true,
+    "explorer.confirmDelete": false,
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "window.zoomLevel": 1,
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
+  }
+  
