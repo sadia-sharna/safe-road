@@ -5,8 +5,8 @@ export const UiRoutes = {
     SignUp: "/signUp",
     Login: "/login",
     Sites: "/sites",
-    CreateSite:"/create-site",
-    EditSite:"/edit-site",
+    // CreateSite:"/create-site",
+    // EditSite:"/edit-site",
 
   };
 
@@ -15,6 +15,6 @@ export const privateRoutePathName = {
     SignUp: "signUp",
     Login: "login",
     Sites: "sites",
-    CreateSite: "create-site",
-    EditSite: "edit-site",
+    // CreateSite: "create-site",
+    // EditSite: "edit-site",
   }

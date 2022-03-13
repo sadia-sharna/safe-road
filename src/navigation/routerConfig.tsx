@@ -7,7 +7,7 @@ import { SignUp } from '../pages/Signup'
 import { UiRoutes, privateRoutePathName } from './constant';
 import Home from '../pages/Home/home';
 import Sites from '../pages/Sites/sites'
-import { SiteGenerator } from '../pages/Sites/components/siteGenerator';
+// import { SiteGenerator } from '../pages/Sites/components/siteGeneratorForm';
 
 
 export default function RouterConfig() {
@@ -20,8 +20,8 @@ export default function RouterConfig() {
             <Route path="/*" element={<PrivateLayout />}>
                 <Route path={privateRoutePathName.Home} element={<Home />} />
                 <Route path={privateRoutePathName.Sites} element={<Sites />} />
-                <Route path={privateRoutePathName.CreateSite} element={<SiteGenerator />} />
-                <Route path={privateRoutePathName.EditSite} element={<SiteGenerator />} />
+                {/* <Route path={privateRoutePathName.CreateSite} element={<SiteGenerator />} />
+                <Route path={privateRoutePathName.EditSite} element={<SiteGenerator />} /> */}
 
             </Route>
         </Routes>

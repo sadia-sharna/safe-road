@@ -37,6 +37,9 @@
     "window.zoomLevel": 1,
     "[typescriptreact]": {
       "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "vscode.typescript-language-features"
     }
   }
   
