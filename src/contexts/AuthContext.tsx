@@ -25,11 +25,10 @@ export function AuthProvider({ children }: any) {
 
     };
     const signup = (model: ISignup) => {
-
-
-        let users = [];
-        users.push(model);
-        localStorage.setItem(USER_STORAGE, JSON.stringify(users));
+        let data = localStorage.getItem(USER_STORAGE);
+        let users = data != null ? JSON.parse(data) : [];
+        // users.push(model);
+        localStorage.setItem(USER_STORAGE, JSON.stringify([...users, model]));
 
 
     };

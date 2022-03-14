@@ -16,6 +16,7 @@
   box-sizing: border-box;
   color: var(--fontPrimary);
   font-family: "Montserrat", sans-serif;
+ 
 }
 
 body {
@@ -23,8 +24,34 @@ body {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: blue;
+}
+
+/*Outlet */
+.bg-outlet{
+  background-color: #f9fafb;
+}
+/*Account component*/
+.account {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.account > span:last-child {
+  cursor: pointer;
+}
+
+/* Top nav component */
+.topNavBorder{
+  border-bottom: 1px solid #e5e5e5;
+}
+.topNav{
+  background-color: white;
+  height: 4rem;
+  padding: 1px;
 }
 
 /* layout component */
@@ -57,3 +84,4 @@ a {
 .blueColor{
   color:blue !important;
 }
+

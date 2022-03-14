@@ -1,71 +1,36 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import * as Icons from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
-import { Button, Form, TextInput } from '../../../components';
-import { useAuth } from '../../../contexts';
-import { ISite } from '../../../core';
-import { SITES_STORAGE } from '../../../services';
-import { SITES_AUDIT_LOG_STORAGE } from '../../../services/sitesService';
-import { authStatusEnum, ISiteAuditLog } from '../../../core/models/siteAuditLogModel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from 'react';
 import { v4 } from 'uuid';
+import { Button, Form, TextInput } from '../../../components';
+import { ISite } from '../../../core';
+
 
 export function SiteGeneratorForm(props: any) {
-    const { selectedSite } = props;
-    console.log(selectedSite)
+    const { selectedSite, handleSubmit } = props;
     const [name, setName] = useState(selectedSite?.name || "");
     const [city, setCity] = useState(selectedSite?.city || "");
     const [description, setDescription] = useState(selectedSite?.description || "");
     const [latitude, setLatitude] = useState(selectedSite?.description || "");
     const [longitude, setLongitude] = useState(selectedSite?.longitude || "");
 
-    const handleSubmit = () => { };
 
-    const handleCreate = (e: any) => {
+    const onSubmitSite = (e: any) => {
         e.preventDefault();
 
-        const siteId = v4();
-        const siteLogId = v4();
-        try {
-            let model: ISite = {
-                id: siteId,
-                name,
-                city,
-                description,
-                latitude,
-                longitude
-            };
-
-            let siteAuditLogModel: ISiteAuditLog = {
-                id: siteLogId,
-                siteId,
-                createdBy: "sharna",
-                createdAt: "3.14.2022",
-                updatedBy: "",
-                updatedAt: "",
-                authStatus: authStatusEnum.Create
-            };
-            let data = localStorage.getItem(SITES_STORAGE);
-            let sites = data != null ? JSON.parse(data) : [];
-            let logData = localStorage.getItem(SITES_AUDIT_LOG_STORAGE);
-            let logs = logData != null ? JSON.parse(logData) : [];
-
-
-            localStorage.setItem(SITES_STORAGE, JSON.stringify([...sites, model]));
-            localStorage.setItem(SITES_AUDIT_LOG_STORAGE, JSON.stringify([...logs, siteAuditLogModel]));
-
-
-        }
-        catch (err) {
-            console.log(err);
-
-        }
+        const model: ISite = {
+            id: selectedSite ? selectedSite?.id : v4(),
+            name,
+            city,
+            description,
+            latitude,
+            longitude
+        };
+        handleSubmit(model);
 
     };
 
-    return <Form className="col-12" onSubmit={handleCreate}>
+    return <Form className="col-12" onSubmit={onSubmitSite}>
         <div className='d-flex justify-content-start mt-1'>
             <Button className="btn btn-sm btn-outline-primary" type="submit" >
                 <FontAwesomeIcon icon={Icons.faSave} className="blueColor" /> Save

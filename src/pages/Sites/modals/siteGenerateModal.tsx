@@ -19,7 +19,7 @@ export function ModalSiteGenerate(props: any) {
 
 
             <Modal.Body>
-                <SiteGeneratorForm selectedSite={props.selectedSite} />
+                <SiteGeneratorForm selectedSite={props.selectedSite} handleSubmit={props.handleSubmit} />
                 {props.selectedSite ? <SiteAuditLog selectedSite={props.selectedSite} /> : null}
             </Modal.Body>
         </Modal>
