@@ -21,10 +21,10 @@ export default function SiteAuditLog(props: IProps) {
                 <hr />
                 {siteAuditLog &&
                     <>
-                        <div>
+                        <div className='fs-6'>
                             {`Created by ${siteAuditLog.createdBy} on ${siteAuditLog.createdAt} `}
                         </div>
-                        <div>
+                        <div className='fs-6'>
                             {siteAuditLog.authStatus === authStatusEnum?.Update
                                 ? `Updated by ${siteAuditLog.updatedBy} on ${siteAuditLog.updatedAt} `
                                 : null}

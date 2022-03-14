@@ -28,6 +28,9 @@ a {
   color: blue;
 }
 
+.fs-7{
+  font-size: .8rem!important;
+}
 /*Outlet */
 .bg-outlet{
   background-color: #f9fafb;

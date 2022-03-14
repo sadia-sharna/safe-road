@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
-import { ILogin, ISignup } from '../core';
+import { ILogin, ISignup, IUser } from '../core';
 import { privateRoutePathName } from '../navigation/constant';
-import { USER_STORAGE } from '../services/authService';
+import { CreateUser, CURRENT_USER_STORAGE, Login, USERS_STORAGE } from '../services/authService';
 
 const AuthContext = React.createContext<any>(null);
 
@@ -10,31 +10,41 @@ export function useAuth() {
     return useContext(AuthContext);
 };
 
+const getPersistedData = () => {
+    const currentStorageData = localStorage.getItem(CURRENT_USER_STORAGE);
+    const currentUser = currentStorageData != null ? JSON.parse(currentStorageData) : null;
+    return currentUser;
+}
 export function AuthProvider({ children }: any) {
-    const [currentUser, setCurrentUser] = useState<any>(null);
+    const [currentUser, setCurrentUser] = useState<any>(getPersistedData());
 
 
     const login = (model: ILogin) => {
-        let data = localStorage.getItem(USER_STORAGE);
-        let users = data != null ? JSON.parse(data) : null;
-        let findUser = users.find((x: ILogin) => x.email === model.email && x.password === model.password);
-        if (findUser) {
+        try {
+            const findUser = Login(model);
             setCurrentUser(findUser);
+
         }
-        return findUser;
+        catch (err) {
+            throw err;
+        }
+        // let data = localStorage.getItem(USERS_STORAGE);
+        // let users = data != null ? JSON.parse(data) : null;
+        // let findUser = users.find((x: IUser) => x.email === model.email && x.password === model.password);
+        // if (findUser) {
+
+        //     localStorage.setItem(CURRENT_USER_STORAGE, JSON.stringify(findUser))
+        //     setCurrentUser(findUser);
+        // }
+        // return findUser;
 
     };
     const signup = (model: ISignup) => {
-        let data = localStorage.getItem(USER_STORAGE);
-        let users = data != null ? JSON.parse(data) : [];
-        // users.push(model);
-        localStorage.setItem(USER_STORAGE, JSON.stringify([...users, model]));
-
-
+        CreateUser(model);
     };
 
     const logout = () => {
-
+        localStorage.removeItem(CURRENT_USER_STORAGE);
     };
 
     const value = {

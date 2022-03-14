@@ -1,6 +1,6 @@
 import moment from "moment";
 import { v4 } from "uuid";
-import { ISignup, ISite, ISiteAuditLog } from "../core";
+import { ISignup, ISiteAuditLog } from "../core";
 import { authStatusEnum } from "../core/enums";
 
 export const SITES_AUDIT_LOG_STORAGE = "Sites-Audit-Log";
@@ -11,7 +11,7 @@ export const CreateSiteAuditLog = (siteId: string, currentUser: ISignup) => {
         id: v4(),
         siteId: siteId,
         createdBy: currentUser?.name,
-        createdAt: moment().format("DD/MM/YYYY hh:mm:ss A"),
+        createdAt: moment().format("DD/MM/YYYY, hh:mm:ss A"),
         authStatus: authStatusEnum.Create
     };
 
@@ -29,7 +29,7 @@ export const UpdateSiteAuditLog = (siteId: string, currentUser: ISignup) => {
     const siteAuditLogModel: ISiteAuditLog = {
         ...findLogBySiteId,
         updatedBy: currentUser?.name,
-        updatedAt: moment().format("DD/MM/YYYY hh:mm:ss A"),
+        updatedAt: moment().format("DD/MM/YYYY, hh:mm:ss A"),
         authStatus: authStatusEnum.Update
     };
     siteAuditLogList[index] = siteAuditLogModel;
@@ -43,12 +43,4 @@ export const GetSiteAuditLogList = () => {
         ? JSON.parse(siteAuditLogStorageData)
         : [];
     return siteAuditLogList;
-};
-export const GetSiteAuditLogById = (siteId: string) => {
-    const siteAuditLogList = GetSiteAuditLogList();
-
-    const findLogBySiteId: ISiteAuditLog =
-        siteAuditLogList.find((log: any) => log.siteId === siteId);
-    return findLogBySiteId;
-
 };

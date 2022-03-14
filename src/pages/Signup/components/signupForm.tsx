@@ -11,9 +11,11 @@ export function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
 
   const { signup } = useAuth();
   const navigate = useNavigate();
+
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -28,9 +30,13 @@ export function SignUpForm() {
         navigate(UiRoutes.Login);
 
       }
-      catch (err) {
 
+      catch (err: any) {
+        setErrMsg(err);
       }
+    }
+    else {
+      setErrMsg("Passwords doesn't match!");
     }
   };
 
@@ -40,25 +46,31 @@ export function SignUpForm() {
       placeholder="Enter name"
       icon="person_outline"
       className="form-control"
-      onChange={(e: any) => setName(e.target.value)} />
+      onChange={(e: any) => setName(e.target.value)}
+      required />
     <TextInput
       type="text"
       placeholder="Enter email"
       icon="alternate_email"
       className="form-control"
-      onChange={(e: any) => setEmail(e.target.value)} />
+      onChange={(e: any) => setEmail(e.target.value)}
+      required />
     <TextInput
       type="password"
       placeholder="Enter password"
       icon="lock"
       className="form-control"
-      onChange={(e: any) => setPassword(e.target.value)} />
+      onChange={(e: any) => setPassword(e.target.value)}
+      required />
     <TextInput
       type="password"
       placeholder="Confirm password"
       icon="lock"
       className="form-control"
-      onChange={(e: any) => setConfirmPassword(e.target.value)} />
+      onChange={(e: any) => setConfirmPassword(e.target.value)}
+      required />
+
+    <div className='text-danger'>{errMsg}</div>
 
     <div className='d-flex justify-content-center mt-4'>
       <Button className="btn btn-primary" type="submit">
