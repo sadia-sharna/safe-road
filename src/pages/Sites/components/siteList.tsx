@@ -5,6 +5,7 @@ import DataTable from 'react-data-table-component';
 import { Button } from '../../../components';
 import { ISite } from '../../../core';
 import { GetSiteList } from '../../../services';
+import { customStyles } from '../../../styles/dataTableStyles';
 
 type IProps = {
     setSelectedSite: any;
@@ -22,6 +23,7 @@ export function SiteList(props: IProps) {
     };
 
     const columns: any[] = [
+
         {
             name: 'Name',
             selector: (row: ISite) => row.name,
@@ -30,10 +32,7 @@ export function SiteList(props: IProps) {
             name: 'City',
             selector: (row: ISite) => row.city,
         },
-        {
-            name: 'Description',
-            selector: (row: ISite) => row.description,
-        },
+
         {
             name: 'Latitude',
             selector: (row: ISite) => row.latitude,
@@ -48,7 +47,7 @@ export function SiteList(props: IProps) {
                 return (
                     <>
                         <Button className="btn btn-sm btn-light" onClick={() => onEditClick(row)} >
-                            <FontAwesomeIcon icon={Icons.faEdit} className="blueColor" />
+                            <FontAwesomeIcon icon={Icons.faEdit} />
                         </Button>
 
 
@@ -59,13 +58,14 @@ export function SiteList(props: IProps) {
 
     ];
     return (
-        <div className='col-12 mt-5 border-1'>
+        <div className='col-12  border-1'>
             <DataTable
                 columns={columns}
                 data={sites}
                 highlightOnHover
                 pointerOnHover
                 pagination
+                customStyles={customStyles}
             />
         </div>
     );

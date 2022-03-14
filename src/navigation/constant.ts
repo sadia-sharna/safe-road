@@ -1,20 +1,14 @@
 
 export const UiRoutes = {
-    Root: "/",
-    Home: "/home",
-    SignUp: "/signUp",
-    Login: "/login",
-    Sites: "/sites",
-    // CreateSite:"/create-site",
-    // EditSite:"/edit-site",
+  Root: "/",
+  SignUp: "/signUp",
+  Login: "/login",
+  Sites: "/sites",
 
-  };
+};
 
 export const privateRoutePathName = {
-    Home: "home",
-    SignUp: "signUp",
-    Login: "login",
-    Sites: "sites",
-    // CreateSite: "create-site",
-    // EditSite: "edit-site",
-  }
+  SignUp: "signUp",
+  Login: "login",
+  Sites: "sites",
+}

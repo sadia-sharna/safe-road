@@ -47,6 +47,7 @@ a {
   cursor: pointer;
 }
 
+
 /* Top nav component */
 .topNavBorder{
   border-bottom: 1px solid #e5e5e5;
@@ -57,18 +58,39 @@ a {
   padding: 1px;
 }
 
+/* Side nav component */
+.sideNavBorder{
+  border-bottom: 1px solid #e5e5e5;
+}
+.sideNav{
+  background-color: rgba(25, 9, 49, 0.267);
+}
+.container-fluid ul li {
+  background-color: #2d00aa!important;
+  color:white;
+}
+
+.container-fluid ul a:hover{
+  background-color: #e5e5e5;
+  color:black;
+} 
+.container-fluid ul a{
+  color: white;
+  font-size: 17px;
+  font-weight: 100;
+}
 /* layout component */
 .main {
   width: 100%;
   padding: 4rem 0;
 }
 
-.container {
+/* .container {
   width: 90%;
   margin: 2rem auto;
-}
+} */
 
-.container-fluid ul{
+/* .container-fluid ul{
   margin-top: 50px;
 }
 
@@ -78,13 +100,10 @@ a {
 
 .container-fluid ul a:hover{
   color: white;
-}
+} */
 
 .rdt_Table{
   border: 1px solid #e9ecef;
 }
 
-.blueColor{
-  color:blue !important;
-}
 

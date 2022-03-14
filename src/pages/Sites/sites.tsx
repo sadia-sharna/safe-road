@@ -31,18 +31,21 @@ export default function Sites() {
 
     return (
         <div>
-            <h1>Sites Page</h1>
+            <h4 className='text-dark'>Sites </h4>
             <Button
-                className="btn btn-primary"
+                className="btn btn-primary mt-4 btn-sm"
                 type="button"
                 onClick={onAddSiteBtnClick}>
                 <span className='text-white'>
-                    Create Site
+                    Add Site
                 </span>
             </Button>
-            <SiteList
-                handleShow={setShowSiteGenerateModal}
-                setSelectedSite={setSelectedSite} />
+            <div className='mt-4'>
+                <SiteList
+                    handleShow={setShowSiteGenerateModal}
+                    setSelectedSite={setSelectedSite} />
+
+            </div>
             <ModalSiteGenerate
                 show={showSiteGenerateModal}
                 handleShow={setShowSiteGenerateModal}

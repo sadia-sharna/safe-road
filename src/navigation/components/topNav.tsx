@@ -31,7 +31,7 @@ export function TopNav({ children }: any) {
         </div>
 
 
-        <div className='row p-2' >
+        <div className='row p-3' >
             {children}
         </div>
 

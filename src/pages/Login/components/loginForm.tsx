@@ -23,7 +23,7 @@ export function LoginForm() {
                 password: password
             };
             login(model);
-            navigate(UiRoutes.Home);
+            navigate(UiRoutes.Sites);
 
         }
         catch (err: any) {
