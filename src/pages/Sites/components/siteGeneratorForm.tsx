@@ -5,9 +5,14 @@ import { v4 } from 'uuid';
 import { Button, Form, TextInput } from '../../../components';
 import { ISite } from '../../../core';
 
+type IProps = {
+    selectedSite?: ISite;
+    handleSubmit: any;
+    handleShow: any;
+};
 
-export function SiteGeneratorForm(props: any) {
-    const { selectedSite, handleSubmit } = props;
+export function SiteGeneratorForm(props: IProps) {
+    const { selectedSite, handleSubmit, handleShow } = props;
     const [name, setName] = useState(selectedSite?.name || "");
     const [city, setCity] = useState(selectedSite?.city || "");
     const [description, setDescription] = useState(selectedSite?.description || "");
@@ -26,23 +31,29 @@ export function SiteGeneratorForm(props: any) {
             latitude,
             longitude
         };
+        handleShow(false);
         handleSubmit(model);
 
+    };
+    const onCancel = () => {
+        handleShow(false);
     };
 
     return <Form className="col-12" onSubmit={onSubmitSite}>
         <div className='d-flex justify-content-start mt-1'>
             <Button className="btn btn-sm btn-outline-primary" type="submit" >
-                <FontAwesomeIcon icon={Icons.faSave} className="blueColor" /> Save
+                <FontAwesomeIcon icon={Icons.faSave} /> Save
             </Button>
-            <Button className="btn btn-sm btn-outline-secondary ms-2" type="submit" >
+            <Button className="btn btn-sm btn-outline-secondary ms-2" type="btn" onClick={onCancel}>
                 <FontAwesomeIcon icon={Icons.faClose} /> Cancel
             </Button>
         </div>
         <hr />
-        <div className='ms-1 mb-4'>
-            <label>Site id: 1</label>
-        </div>
+        {selectedSite
+            ? <div className='ms-1 mb-4'>
+                <label>Site id: {(selectedSite.id)?.split('-')[0]}</label>
+            </div>
+            : null}
         <TextInput
             type="text"
             placeholder="Name"

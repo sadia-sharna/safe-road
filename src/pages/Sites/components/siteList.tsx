@@ -1,20 +1,24 @@
-import React from 'react'
+import * as Icons from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import DataTable from 'react-data-table-component';
-import { Link } from 'react-router-dom';
 import { Button } from '../../../components';
 import { ISite } from '../../../core';
-import { UiRoutes } from '../../../navigation/constant';
-import { SITES_STORAGE } from '../../../services';
+import { GetSiteList } from '../../../services';
 
+type IProps = {
+    setSelectedSite: any;
+    handleShow: any;
+};
 
+export function SiteList(props: IProps) {
+    const { setSelectedSite, handleShow } = props;
 
-export function SiteList(props: any) {
-    let data = localStorage.getItem(SITES_STORAGE);
-    let sites = data != null ? JSON.parse(data) : [];
+    const sites = GetSiteList();
+
     const onEditClick = (row: ISite) => {
-        console.log(row);
-        props.setSelectedSite(row);
-        props.handleShow(true);
+        setSelectedSite(row);
+        handleShow(true);
     };
 
     const columns: any[] = [
@@ -39,19 +43,14 @@ export function SiteList(props: any) {
             selector: (row: ISite) => row.longitude,
         },
         {
-            name: 'Actions',
+            name: 'Action',
             selector: (row: ISite) => {
                 return (
                     <>
-                        <Button onClick={() => onEditClick(row)}>
-                            Edit
+                        <Button className="btn btn-sm btn-light" onClick={() => onEditClick(row)} >
+                            <FontAwesomeIcon icon={Icons.faEdit} className="blueColor" />
                         </Button>
-                        {/* <Link
-                        to={UiRoutes.EditSite}
-                        className="btn"
-                    >
-                        Edit
-                    </Link> */}
+
 
                     </>
                 );

@@ -2,25 +2,35 @@ import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import { SiteGeneratorForm } from '..';
 import { Button, Form, TextInput } from '../../../components';
+import { ISite } from '../../../core';
 import SiteAuditLog from '../components/siteAuditLog';
 
-export function ModalSiteGenerate(props: any) {
-    console.log(props.selectedSite)
+type IProps = {
+    selectedSite?: ISite;
+    show: boolean;
+    handleSubmit: any;
+    handleShow: any;
+
+};
+export function ModalSiteGenerate(props: IProps) {
+    const { selectedSite, show, handleSubmit, handleShow } = props;
     return (
         <Modal
-            show={props.show}
-            onHide={() => props.handleShow(false)}
+            show={show}
+            onHide={() => handleShow(false)}
             centered
 
         >
-            {/* <Modal.Header closeButton>
-                <Modal.Title>Add User</Modal.Title>
-            </Modal.Header> */}
-
-
             <Modal.Body>
-                <SiteGeneratorForm selectedSite={props.selectedSite} handleSubmit={props.handleSubmit} />
-                {props.selectedSite ? <SiteAuditLog selectedSite={props.selectedSite} /> : null}
+                <SiteGeneratorForm
+                    selectedSite={selectedSite}
+                    handleSubmit={handleSubmit}
+                    handleShow={handleShow} />
+                {
+                    selectedSite ?
+                        <SiteAuditLog selectedSite={selectedSite} />
+                        : null
+                }
             </Modal.Body>
         </Modal>
     )

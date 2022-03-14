@@ -1,22 +1,19 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router';
+import React, { useState } from 'react';
 import { ModalSiteGenerate } from '.';
-import { Button } from '../../components'
+import { Button } from '../../components';
 import { useAuth } from '../../contexts';
 import { ISite } from '../../core';
-import { UiRoutes } from '../../navigation/constant';
 import { CreateSite, UpdateSite } from '../../services';
 import { SiteList } from './components';
 
 export default function Sites() {
 
-    const [selectedSite, setSelectedSite] = useState("");
-    const navigate = useNavigate();
+    const [selectedSite, setSelectedSite] = useState<ISite>();
     const [showSiteGenerateModal, setShowSiteGenerateModal] = useState(false);
     const { currentUser } = useAuth();
 
     const onAddSiteBtnClick = (e: any) => {
-        setSelectedSite("");
+        setSelectedSite(undefined);
         setShowSiteGenerateModal(true);
 
     };
@@ -35,10 +32,17 @@ export default function Sites() {
     return (
         <div>
             <h1>Sites Page</h1>
-            <Button className="btn btn-primary" type="button" onClick={onAddSiteBtnClick}>
-                <span className='text-white'> Create Site</span>
+            <Button
+                className="btn btn-primary"
+                type="button"
+                onClick={onAddSiteBtnClick}>
+                <span className='text-white'>
+                    Create Site
+                </span>
             </Button>
-            <SiteList handleShow={setShowSiteGenerateModal} setSelectedSite={setSelectedSite} />
+            <SiteList
+                handleShow={setShowSiteGenerateModal}
+                setSelectedSite={setSelectedSite} />
             <ModalSiteGenerate
                 show={showSiteGenerateModal}
                 handleShow={setShowSiteGenerateModal}
