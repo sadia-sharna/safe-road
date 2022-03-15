@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { ISiteAuditLog } from '../../../core';
 import { authStatusEnum } from '../../../core/enums';
-import { GetSiteAuditLogList, SITES_AUDIT_LOG_STORAGE } from '../../../services';
+import { GetSiteAuditLogList } from '../../../services';
 
 type IProps = {
     selectedSite: any;

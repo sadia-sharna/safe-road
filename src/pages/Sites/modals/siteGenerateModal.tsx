@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react';
 import { Modal } from 'react-bootstrap';
 import { SiteGeneratorForm } from '..';
-import { Button, Form, TextInput } from '../../../components';
 import { ISite } from '../../../core';
 import SiteAuditLog from '../components/siteAuditLog';
 
