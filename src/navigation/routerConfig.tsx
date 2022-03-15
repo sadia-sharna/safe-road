@@ -6,7 +6,7 @@ import { Login } from '../pages/Login'
 import { SignUp } from '../pages/Signup'
 import Sites from '../pages/Sites/sites'
 import { privateRoutePathName, UiRoutes } from './constant'
-// import { SiteGenerator } from '../pages/Sites/components/siteGeneratorForm';
+import Notfound from './notfound'
 
 
 export default function RouterConfig() {
@@ -18,8 +18,10 @@ export default function RouterConfig() {
             <Route path={UiRoutes.SignUp} element={<PublicLayout> <SignUp /></PublicLayout>} />
             <Route path="/*" element={<PrivateLayout />}>
                 <Route path={privateRoutePathName.Sites} element={<Sites />} />
+                <Route path='*' element={<Notfound />} />
 
             </Route>
+
         </Routes>
 
     )

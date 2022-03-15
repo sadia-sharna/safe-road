@@ -1,3 +1,4 @@
+import { EmailIsUsedMsg, LogInErrMsg } from "../core";
 import { ILogin, ISignup, IUser } from "../core/models";
 
 export const USERS_STORAGE = "USERS";
@@ -10,7 +11,7 @@ export const CreateUser = (model: ISignup) => {
         return localStorage.setItem(USERS_STORAGE, JSON.stringify([...users, model]));
 
     }
-    else throw 'This Email is Already Used!';
+    else throw EmailIsUsedMsg;
 
 };
 
@@ -21,7 +22,7 @@ export const Login = (model: ILogin) => {
         localStorage.setItem(CURRENT_USER_STORAGE, JSON.stringify(findUser));
         return findUser;
     }
-    else throw "Password or email doesn't Match!";
+    else throw LogInErrMsg;
 };
 
 export const GetUsers = () => {

@@ -16,7 +16,7 @@ export function SiteGeneratorForm(props: IProps) {
     const [name, setName] = useState(selectedSite?.name || "");
     const [city, setCity] = useState(selectedSite?.city || "");
     const [description, setDescription] = useState(selectedSite?.description || "");
-    const [latitude, setLatitude] = useState(selectedSite?.description || "");
+    const [latitude, setLatitude] = useState(selectedSite?.latitude || "");
     const [longitude, setLongitude] = useState(selectedSite?.longitude || "");
 
 
@@ -31,6 +31,8 @@ export function SiteGeneratorForm(props: IProps) {
             latitude,
             longitude
         };
+
+
         handleShow(false);
         handleSubmit(model);
 
@@ -60,47 +62,50 @@ export function SiteGeneratorForm(props: IProps) {
                 type="text"
                 className="form-control"
                 value={name}
-                onChange={(e: any) => setName(e.target.value)} />
+                onChange={(e: any) => setName(e.target.value)}
+                required />
         </div>
 
-        <div className="form-group">
+        <div className="form-group mt-4">
             <label>Jurisdiction/City/Region</label>
             <TextInput
                 type="text"
                 className="form-control"
                 value={city}
-                onChange={(e: any) => setCity(e.target.value)} />
+                onChange={(e: any) => setCity(e.target.value)}
+                required />
 
         </div>
 
-        <div className="form-group">
+        <div className="form-group mt-4">
             <label>Site Description</label>
-            <TextInput
-                type="text"
+            <textarea
                 className="form-control"
                 value={description}
                 onChange={(e: any) => setDescription(e.target.value)} />
         </div>
 
-        <div className='row'>
+        <div className='row mt-4'>
             <div className='col-6'>
                 <div className="form-group">
                     <label>Latitude</label>
                     <TextInput
-                        type="text"
+                        type="number"
                         className="form-control"
                         value={latitude}
-                        onChange={(e: any) => setLatitude(e.target.value)} />
+                        onChange={(e: any) => setLatitude(e.target.value)}
+                        required />
                 </div>
             </div>
             <div className='col-6'>
                 <div className="form-group">
                     <label>Longitude</label>
                     <TextInput
-                        type="text"
+                        type="number"
                         className="form-control"
                         value={longitude}
-                        onChange={(e: any) => setLongitude(e.target.value)} />
+                        onChange={(e: any) => setLongitude(e.target.value)}
+                        required />
                 </div>
 
             </div>

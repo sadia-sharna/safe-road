@@ -79,28 +79,13 @@ a {
   font-size: 17px;
   font-weight: 100;
 }
+
 /* layout component */
 .main {
   width: 100%;
   padding: 4rem 0;
 }
 
-/* .container {
-  width: 90%;
-  margin: 2rem auto;
-} */
-
-/* .container-fluid ul{
-  margin-top: 50px;
-}
-
-.container-fluid ul a:active{
-  color: red;
-}
-
-.container-fluid ul a:hover{
-  color: white;
-} */
 
 .rdt_Table{
   border: 1px solid #e9ecef;

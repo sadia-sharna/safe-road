@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router';
-import { ILogin, ISignup, IUser } from '../core';
-import { privateRoutePathName } from '../navigation/constant';
-import { CreateUser, CURRENT_USER_STORAGE, Login, USERS_STORAGE } from '../services/authService';
+import React, { useContext, useState } from 'react';
+import { ILogin, ISignup } from '../core';
+import { CreateUser, CURRENT_USER_STORAGE, Login } from '../services/authService';
 
 const AuthContext = React.createContext<any>(null);
 
@@ -28,15 +26,6 @@ export function AuthProvider({ children }: any) {
         catch (err) {
             throw err;
         }
-        // let data = localStorage.getItem(USERS_STORAGE);
-        // let users = data != null ? JSON.parse(data) : null;
-        // let findUser = users.find((x: IUser) => x.email === model.email && x.password === model.password);
-        // if (findUser) {
-
-        //     localStorage.setItem(CURRENT_USER_STORAGE, JSON.stringify(findUser))
-        //     setCurrentUser(findUser);
-        // }
-        // return findUser;
 
     };
     const signup = (model: ISignup) => {

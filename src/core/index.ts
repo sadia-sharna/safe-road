@@ -1,2 +1,2 @@
-export * from './appStorage';
+export * from './appConsts';
 export * from './models';

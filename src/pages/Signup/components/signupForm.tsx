@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, Checkbox, Form, TextInput } from '../../../components';
+import { Button, Form, TextInput } from '../../../components';
 import { useAuth } from '../../../contexts';
-import { privateRoutePathName, UiRoutes } from '../../../navigation/constant';
 import { ISignup } from '../../../core/models/signupModel';
+import { UiRoutes } from '../../../navigation/constant';
 
 export function SignUpForm() {
 
